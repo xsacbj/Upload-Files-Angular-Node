@@ -1,0 +1,28 @@
+<ul class="conteiner">
+    <li *ngFor="let file of files">
+        <div class="file-info">
+            <div [style.background-image]="file.preview" class="preview"></div>
+            <div>
+                <strong>{{file.name}}</strong>
+                <span>{{file.readableSize}}<button *ngIf="file.uploaded" (click)="onDelete(file.id)">Excluir</button></span>
+            </div>
+            
+        </div>
+
+        <div *ngIf="!file.uploaded && !file.error">
+            <circle-progress
+                [percent]="file.progress">
+            </circle-progress>
+        </div>
+
+        <a *ngIf="file.url"
+            href={{file.url}} 
+            target="_blank"
+            rel="noopener noreferrer">
+            <mat-icon class="link">link</mat-icon>
+        </a>
+        
+        <mat-icon *ngIf="file.uploaded" class="check_circle">check_circle</mat-icon>
+        <mat-icon *ngIf="file.error" class="error" tooltip="Aquivo muito grande" placement="right">error</mat-icon>
+    </li>
+</ul>

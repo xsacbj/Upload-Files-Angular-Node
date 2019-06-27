@@ -1,0 +1,16 @@
+<div class="inline-block">
+    <div
+        ngfDrop
+        ngfSelect
+        class="dropzone"
+        (filesChange) = "onFilesChange()"
+        [(validDrag)] = "validDrag"
+        [class.dragActive] = "validDrag"
+        [class.dragReject] = "validDrag===false"
+        [class.success] = "validDrag"
+        [class.error] = "validDrag===false"
+        [(files)] = "files"
+        [accept] = "'image/*,.pdf'">
+            {{validDrag == null ? 'Arraste os arquivos aqui...' : validDrag ? 'Solte os aquivos aqui' : 'Arquivo não suportado'}}
+    </div>
+</div>
